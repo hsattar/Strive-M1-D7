@@ -92,7 +92,7 @@ a:hover {
 }
 
 .toggling-image {
-    display: none;
+    visibility: hidden;
 }
 
 footer {
