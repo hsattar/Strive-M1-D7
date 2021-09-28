@@ -42,9 +42,12 @@ toggleImgs.onclick = () => {
         img.classList.toggle('toggling-image')
     }
 }
+
+let btnclicks = 0
 priceColour.onclick = () => {
-    let colours = ['red', 'blue', 'green']
+    let colours = ['red', 'blue', 'green', 'yellow', 'orange', 'grey']
     for (let i = 0; i < prices.length; i++) {
-        prices[i].style.color = colours[i]
+        prices[i].style.color = colours[btnclicks]
     }
+    btnclicks++
 }
