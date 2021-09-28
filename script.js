@@ -14,6 +14,8 @@ let priceColour = document.getElementById('price-colour')
 
 let header = document.getElementsByTagName('h1')[0]
 let body = document.getElementsByTagName('body')[0]
+let address = document.getElementsByTagName('address')[0]
+let images = document.getElementsByTagName('img')
 
 changeHeader.onclick = () => {
     header.innerText = 'You Changed The H1'
@@ -21,4 +23,14 @@ changeHeader.onclick = () => {
 
 changeBgc.onclick = () => {
     body.style.backgroundColor = 'lightgreen'
+}
+
+changeAddress.onclick = () => {
+    address.innerText = 'This Is A Fake Address'
+}
+
+toggleImgs.onclick = () => {
+    for (img of images) {
+        img.classList.toggle('toggling-image')
+    }
 }

@@ -31,3 +31,7 @@ a:hover {
     text-decoration: underline;
     color: black;
 }
+
+.toggling-image {
+    display: none;
+}
