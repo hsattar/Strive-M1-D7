@@ -51,3 +51,14 @@ priceColour.onclick = () => {
     }
     btnclicks++
 }
+
+let msgArea = document.getElementById('message-area')
+let messageInput = document.getElementById('message-box')
+let send = document.getElementById('send-btn')
+
+send.onclick = () => {
+    let newMsg = document.createElement('p')
+    newMsg.innerText = messageInput.value
+    msgArea.appendChild(newMsg)
+    messageInput.value = ''
+}
