@@ -40,6 +40,10 @@ a:hover {
     color: black;
 }
 
+.links-class {
+    color: rgb(41, 190, 240);
+}
+
 .message-board {
     display: flex;
     flex-direction: column;

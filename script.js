@@ -33,7 +33,7 @@ changeAddress.onclick = () => {
 
 addLinkClass.onclick = () => {
     for (let link of links) {
-        link.classList.add('random-class')
+        link.classList.add('links-class')
     }
 }
 
