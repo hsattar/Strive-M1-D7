@@ -45,14 +45,23 @@ a:hover {
     flex-direction: column;
     align-items: center;
     margin: 1rem;
+    padding: .75rem;
     margin-bottom: 2rem;
     border: 1px solid lightgrey;
     min-width: 80%;
 }
 
+.message-board h2 {
+    padding-bottom: .5rem;
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+}
+
 .input-area {
     min-width: 80%;
-    padding: 1rem;
+    padding: 2rem 1rem;
+    padding-bottom: 0;
+    display: flex;
 }
 
 .btn-area {
