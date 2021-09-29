@@ -73,4 +73,21 @@ send.onclick = () => {
         msgContainer = event.target.parentNode
         msgContainer.remove()
     })
+    newMsg.addEventListener('click', (event) => {
+        let editMsg = event.target
+        let editMsgRow = editMsg.parentNode
+        editMsgRow.innerHTML = 
+        `<input class="changing-input" type="text" value="${editMsg.innerText}">
+        <i class="bi bi-check btn btn-success"></i>`
+        let changingMsg = document.getElementsByClassName('changing-input')[0]
+        changingMsg.focus()
+        let saveBtn = document.getElementsByClassName('bi-check')[0]
+        saveBtn.addEventListener('click', (e) => {
+            let newMsgValue = changingMsg.value
+            let saveEdit = e.target.parentNode
+            saveEdit.innerHTML = 
+            `<p>${newMsgValue}</p>
+            <i class="btn btn-danger bi bi-trash"></i>`
+        })
+    }) 
 }
