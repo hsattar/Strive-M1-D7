@@ -57,7 +57,20 @@ messageInput.onkeyup = (event) => {
 send.onclick = () => {
     let newMsg = document.createElement('p')
     newMsg.innerText = messageInput.value
-    msgArea.appendChild(newMsg)
+    let msgRow = document.createElement('div')
+    msgRow.classList.add('messages-row')
+    msgArea.appendChild(msgRow)
+    msgRow.appendChild(newMsg)
+    let deleteBtn = document.createElement('i')
+    deleteBtn.classList.add('bi')
+    deleteBtn.classList.add('bi-trash')
+    deleteBtn.classList.add('btn')
+    deleteBtn.classList.add('btn-danger')
+    msgRow.appendChild(deleteBtn)
     messageInput.value = ''
     messageInput.focus()
+    deleteBtn.addEventListener('click', (event) => {
+        msgContainer = event.target.parentNode
+        msgContainer.remove()
+    })
 }
