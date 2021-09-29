@@ -90,3 +90,29 @@ send.onclick = () => {
         })
     }) 
 }
+
+// const sendMsg = () => {
+//     let messageInput = document.getElementById('message-box')
+//     let msgArea = document.getElementById('message-area')
+//     msgRow = 
+//     `<div class="messages-row">
+//     <p>${messageInput.value}</p>
+//     <i class="btn btn-danger bi bi-trash"></i>
+//     </div>`
+//     msgArea.innerHTML += msgRow
+//     messageInput.value = ''
+//     messageInput.focus()
+// }
+
+// let send = document.getElementById('send-btn')
+// send.addEventListener('click', sendMsg)
+
+// let deleteBtn = document.getElementsByClassName('bi-trash')[0]
+// for (btn of deleteBtn) {
+//     btn.addEventListener('click', deleteMsg)
+// }
+
+// const deleteMsg = event => {
+//     let buttonClicked = event.target
+//     buttonClicked.parentNode.remove()
+// }
