@@ -47,32 +47,45 @@ let msgArea = document.getElementById('message-area')
 let messageInput = document.getElementById('message-box')
 let send = document.getElementById('send-btn')
 
-messageInput.onkeyup = (event) => {
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        send.click()
+const sendMsgWithEnter = (input, btn) => {
+    input.onkeyup = (event) => {
+        if (event.keyCode === 13) {
+            event.preventDefault()
+            btn.click()
+        }
     }
+    
 }
 
-send.onclick = () => {
+sendMsgWithEnter(messageInput, send)
+let msgRow = document.createElement('div')
+
+const sendMsg = () => {
     let newMsg = document.createElement('p')
     newMsg.innerText = messageInput.value
-    let msgRow = document.createElement('div')
     msgRow.classList.add('messages-row')
     msgArea.appendChild(msgRow)
     msgRow.appendChild(newMsg)
+    messageInput.value = ''
+    messageInput.focus()
+}
+
+const deleteMsgBtn = () => {
+    sendMsg()
     let deleteBtn = document.createElement('i')
     deleteBtn.classList.add('bi')
     deleteBtn.classList.add('bi-trash')
     deleteBtn.classList.add('btn')
     deleteBtn.classList.add('btn-danger')
     msgRow.appendChild(deleteBtn)
-    messageInput.value = ''
-    messageInput.focus()
     deleteBtn.addEventListener('click', (event) => {
         msgContainer = event.target.parentNode
         msgContainer.remove()
     })
+}
+
+send.onclick = () => {
+    deleteMsgBtn()
     newMsg.addEventListener('click', (event) => {
         let editMsg = event.target
         let editMsgRow = editMsg.parentNode
@@ -82,6 +95,7 @@ send.onclick = () => {
         let changingMsg = document.getElementsByClassName('changing-input')[0]
         changingMsg.focus()
         let saveBtn = document.getElementsByClassName('bi-check')[0]
+        sendMsgWithEnter(changingMsg, saveBtn)
         saveBtn.addEventListener('click', (e) => {
             let newMsgValue = changingMsg.value
             let saveEdit = e.target.parentNode
