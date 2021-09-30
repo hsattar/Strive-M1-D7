@@ -76,6 +76,11 @@ const deleteMsg = (event, parentNode) => {
     })
 }
 
+const deleteEditedMsg = (event) => {
+    let msgRow = event.target.parentNode
+    msgRow.remove()
+}
+
 const editMsg = (newMsg) => {
     newMsg.addEventListener('click', (event) => {
         let editMsg = event.target
@@ -93,12 +98,12 @@ const editMsg = (newMsg) => {
 const saveMsg = (saveBtn, changingMsg) => {
     sendMsgWithEnter(changingMsg, saveBtn)
     saveBtn.addEventListener('click', (e) => {
-    //console.log(saveBtn)
+    console.log(e)
     let newMsgValue = changingMsg.value
     let saveEdit = e.target.parentNode
     saveEdit.innerHTML = 
     `<p>${newMsgValue}</p>
-    <i class="btn btn-danger bi bi-trash"></i>`
+    <i class="btn btn-danger bi bi-trash" onclick="deleteEditedMsg(event)"></i>`
 })
 }
 
