@@ -37,6 +37,8 @@ priceColour.onclick = () => {
     }
     btnclicks++
 }
+
+
 let msgArea = document.getElementById('message-area')
 let messageInput = document.getElementById('message-box')
 let send = document.getElementById('send-btn')
@@ -50,27 +52,31 @@ const sendMsgWithEnter = (input, btn) => {
     }
 }
 
-sendMsgWithEnter(messageInput, send)
 
-send.onclick = () => {
-    let newMsg = document.createElement('p')
-    newMsg.innerText = messageInput.value
+const sendMsg = () => {
     let msgRow = document.createElement('div')
     msgRow.classList.add('messages-row')
     msgArea.appendChild(msgRow)
+    let newMsg = document.createElement('p')
+    newMsg.innerText = messageInput.value
     msgRow.appendChild(newMsg)
-    let deleteBtn = document.createElement('i')
-    deleteBtn.classList.add('bi')
-    deleteBtn.classList.add('bi-trash')
-    deleteBtn.classList.add('btn')
-    deleteBtn.classList.add('btn-danger')
-    msgRow.appendChild(deleteBtn)
     messageInput.value = ''
     messageInput.focus()
-    deleteBtn.addEventListener('click', (event) => {
-        msgContainer = event.target.parentNode
+    let deleteBtn = document.createElement('i')
+    deleteBtn.className = 'bi bi-trash btn btn-danger'
+    msgRow.appendChild(deleteBtn)
+    deleteMsg(deleteBtn, msgRow)
+    editMsg(newMsg)
+}
+
+const deleteMsg = (event, parentNode) => {
+    event.addEventListener('click', () => {
+        msgContainer = parentNode
         msgContainer.remove()
     })
+}
+
+const editMsg = (newMsg) => {
     newMsg.addEventListener('click', (event) => {
         let editMsg = event.target
         let editMsgRow = editMsg.parentNode
@@ -80,39 +86,21 @@ send.onclick = () => {
         let changingMsg = document.getElementsByClassName('changing-input')[0]
         changingMsg.focus()
         let saveBtn = document.getElementsByClassName('bi-check')[0]
-        sendMsgWithEnter(changingMsg, saveBtn)
-        saveBtn.addEventListener('click', (e) => {
-            let newMsgValue = changingMsg.value
-            let saveEdit = e.target.parentNode
-            saveEdit.innerHTML = 
-            `<p>${newMsgValue}</p>
-            <i class="btn btn-danger bi bi-trash"></i>`
-        })
-    }) 
+        saveMsg(saveBtn, changingMsg)
+})
 }
 
-// const sendMsg = () => {
-//     let messageInput = document.getElementById('message-box')
-//     let msgArea = document.getElementById('message-area')
-//     msgRow = 
-//     `<div class="messages-row">
-//     <p>${messageInput.value}</p>
-//     <i class="btn btn-danger bi bi-trash"></i>
-//     </div>`
-//     msgArea.innerHTML += msgRow
-//     messageInput.value = ''
-//     messageInput.focus()
-// }
+const saveMsg = (saveBtn, changingMsg) => {
+    sendMsgWithEnter(changingMsg, saveBtn)
+    saveBtn.addEventListener('click', (e) => {
+    //console.log(saveBtn)
+    let newMsgValue = changingMsg.value
+    let saveEdit = e.target.parentNode
+    saveEdit.innerHTML = 
+    `<p>${newMsgValue}</p>
+    <i class="btn btn-danger bi bi-trash"></i>`
+})
+}
 
-// let send = document.getElementById('send-btn')
-// send.addEventListener('click', sendMsg)
-
-// let deleteBtn = document.getElementsByClassName('bi-trash')[0]
-// for (btn of deleteBtn) {
-//     btn.addEventListener('click', deleteMsg)
-// }
-
-// const deleteMsg = event => {
-//     let buttonClicked = event.target
-//     buttonClicked.parentNode.remove()
-// }
+sendMsgWithEnter(messageInput, send)
+send.addEventListener('click', sendMsg)
